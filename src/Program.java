@@ -33,7 +33,7 @@ public class Program {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					//LISTA com os dias em primeiro e o valor armazenado separado por uma ,
+					//LISTA todos os dias com o valor do faturamento em uma array separando eles por uma ,
 					allString = eElement.getElementsByTagName("dia").item(0).getTextContent() + "," + eElement.getElementsByTagName("valor").item(0).getTextContent();
 					list.add(allString);
 				}
@@ -41,11 +41,11 @@ public class Program {
 			}
 			
 			List<String> completList = list.stream().collect(Collectors.toList());
-			Double lowInvoice = 0.00;
-			Integer lowDay = 0;
-			Double highInvoice = 0.00;
-			Integer highDay = 0;
-			Integer totalDays = 0;
+			Double lowInvoice = 0.00; //armazena o faturamento mais baixo
+			Integer lowDay = 0; //armazena o dia do faturamento mais baixo
+			Double highInvoice = 0.00; //armazena o faturamento mais alto
+			Integer highDay = 0; //armazena o dia do faturamento mais alto
+			Integer totalDays = 0; //armazena o total de dias em que o faturamento foi maior que 0
 			Double sum = 0.00;
 			for (String str: completList) {
 				String[] allDays = str.split(",");
